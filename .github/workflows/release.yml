@@ -1,0 +1,30 @@
+name: release
+
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    release:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Get next release version
+              id: semver
+              uses: ietf-tools/semver-action@v1
+              with:
+                  token: ${{ secrets.GITHUB_TOKEN }}
+                  branch: main
+
+            - name: Create release
+              uses: ncipollo/release-action@v1.12.0
+              with:
+                  allowsUpdates: true
+                  draft: false
+                  makeLatest: true
+                  name: ${{ steps.semver.outputs.version }}
+                  body: Commit history for ${{ steps.semver.outputs.version }}
+                  token: ${{ secrets.GITHUB_TOKEN }}
