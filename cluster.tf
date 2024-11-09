@@ -34,5 +34,4 @@ resource "google_container_cluster" "gke_cluster" {
     ignore_changes = [node_pool]
   }
 
-  labels = local.common_tags
 }
