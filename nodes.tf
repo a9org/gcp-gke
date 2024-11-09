@@ -31,6 +31,4 @@ resource "google_container_node_pool" "primary_nodes" {
       "https://www.googleapis.com/auth/monitoring",
     ]
   }
-
-  labels = local.common_tags
 }
