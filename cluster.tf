@@ -30,6 +30,10 @@ resource "google_container_cluster" "gke_cluster" {
     update = "20m"
   }
 
+  resource_labels = merge(local.common_tags, {
+    "cluster" = "gke-${local.prefix_name}-clt"
+  })
+
   lifecycle {
     ignore_changes = [node_pool]
   }
