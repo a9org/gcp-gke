@@ -30,7 +30,6 @@ resource "google_container_node_pool" "primary_nodes" {
       "https://www.googleapis.com/auth/logging.write",
       "https://www.googleapis.com/auth/monitoring",
     ]
+    tags = ["gke-cluster"]
   }
-
-  tags = ["gke-cluster"]
 }
