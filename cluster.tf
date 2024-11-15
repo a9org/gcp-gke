@@ -34,8 +34,6 @@ resource "google_container_cluster" "gke_cluster" {
     "cluster" = "gke-${local.prefix_name}-clt"
   })
 
-  tags = ["gke-cluster"]
-
   lifecycle {
     ignore_changes = [node_pool]
   }
